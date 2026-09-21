@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin</title>
+</head>
+
+<body>
+
+    <main layout:fragment="content">
+
+        <div class="text-center">
+
+            <h1 class="mb-3">
+                Trang Admin
+            </h1>
+
+            <p class="lead">
+                Bạn đang đăng nhập với quyền Administrator.
+            </p>
+
+            <div class="alert alert-success">
+                ROLE_ADMIN được phép truy cập trang này.
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<header th:fragment="header">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <a class="navbar-brand"
+               th:href="@{/home}">
+                Security SB VD2
+            </a>
+
+            <div class="ms-auto"
+                 sec:authorize="isAuthenticated()">
+
+                <span class="text-white me-3">
+                    Xin chào,
+                    <strong th:text="${#authentication.principal.fullName}">
+                        User
+                    </strong>
+                </span>
+
+                <form th:action="@{/logout}"
+                      method="post"
+                      class="d-inline">
+
+                    <button type="submit"
+                            class="btn btn-outline-light btn-sm">
+                        Đăng xuất
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- THÔNG TIN USER -->
+
+    <div class="container mt-3"
+         sec:authorize="isAuthenticated()">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <div class="row align-items-center">
+
+                    <!-- IMAGE -->
+
+                    <div class="col-md-2 text-center">
+
+                        <img th:src="${#authentication.principal.images}"
+                             alt="User Image"
+                             class="img-thumbnail"
+                             style="width: 100px;
+                                    height: 100px;
+                                    object-fit: cover;">
+
+                    </div>
+
+
+                    <!-- USER INFORMATION -->
+
+                    <div class="col-md-10">
+
+                        <h5>
+                            Thông tin tài khoản
+                        </h5>
+
+                        <p class="mb-1">
+
+                            <strong>
+                                Họ tên:
+                            </strong>
+
+                            <span th:text="${#authentication.principal.fullName}">
+                                User
+                            </span>
+
+                        </p>
+
+
+                        <p class="mb-1">
+
+                            <strong>
+                                Username:
+                            </strong>
+
+                            <span th:text="${#authentication.principal.username}">
+                                username
+                            </span>
+
+                        </p>
+
+
+                        <p class="mb-1">
+
+                            <strong>
+                                Email:
+                            </strong>
+
+                            <span th:text="${#authentication.principal.email}">
+                                email
+                            </span>
+
+                        </p>
+
+
+                        <p class="mb-0">
+
+                            <strong>
+                                Role:
+                            </strong>
+
+                            <span class="badge bg-primary"
+                                  th:text="${#authentication.principal.role}">
+                                ROLE_USER
+                            </span>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+</body>
+</html>
